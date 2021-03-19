@@ -6,17 +6,16 @@
   "type": "library",
   "license": "MIT",
   "require": {
-    "php": "~7.2||8.0"
+    "php": "~7.4||8.0"
   },
   "require-dev": {
     "lunr/halo": "dev-master",
-    "phpunit/phpunit": "~8.0",
-    "ext-xdebug": ">=2.4"
+    "phpunit/phpunit": "~9.0"
   },
   "config": {
     "optimize-autoloader": true
   },
   "autoload": {
-    "psr-4": {"Lunr\\Core\\": "/src/Lunr/Core/"}
+    "psr-4": {"Lunr\\Core\\": "src/Lunr/Core"}
   }
 }
