@@ -43,7 +43,7 @@ trait ConfigurationAccessMockTrait
                          ->with($key)
                          ->andReturn(!is_null($value));
 
-            if (is_array($value) === TRUE)
+            if (is_array($value) === TRUE && array_is_list($value) === FALSE)
             {
                 $return = $this->expectSubConfigurationAccess($value);
 
@@ -81,7 +81,7 @@ trait ConfigurationAccessMockTrait
                       ->with($key)
                       ->andReturn(!is_null($value));
 
-            if (is_array($value) === TRUE)
+            if (is_array($value) === TRUE && array_is_list($value) === FALSE)
             {
                 $return = $this->expectSubConfigurationAccess($value);
 
