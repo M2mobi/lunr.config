@@ -34,7 +34,7 @@ class ConfigurationArrayAccessTest extends ConfigurationTest
      *
      * @dataProvider existingConfigPairProvider
      */
-    public function testOffsetExists($offset): void
+    public function testOffsetExists(mixed $offset): void
     {
         $this->assertTrue($this->class->offsetExists($offset));
     }
@@ -46,7 +46,7 @@ class ConfigurationArrayAccessTest extends ConfigurationTest
      *
      * @dataProvider nonExistingConfigPairProvider
      */
-    public function testOffsetDoesNotExist($offset): void
+    public function testOffsetDoesNotExist(mixed $offset): void
     {
         $this->assertFalse($this->class->offsetExists($offset));
     }
@@ -58,7 +58,7 @@ class ConfigurationArrayAccessTest extends ConfigurationTest
      *
      * @dataProvider existingConfigPairProvider
      */
-    public function testOffsetGetWithExistingOffset($offset): void
+    public function testOffsetGetWithExistingOffset(mixed $offset): void
     {
         $this->assertEquals($this->config[$offset], $this->class->offsetGet($offset));
     }
@@ -70,7 +70,7 @@ class ConfigurationArrayAccessTest extends ConfigurationTest
      *
      * @dataProvider nonExistingConfigPairProvider
      */
-    public function testOffsetGetWithNonExistingOffset($offset): void
+    public function testOffsetGetWithNonExistingOffset(mixed $offset): void
     {
         $this->assertNull($this->class->offsetGet($offset));
     }

@@ -136,7 +136,7 @@ class ConfigurationBaseTest extends ConfigurationTest
     public function testCountIsZero(): void
     {
         $this->assertEquals(0, $this->class->count());
-        $this->assertEquals(0, count($this->class));
+        $this->assertCount(0, $this->class);
     }
 
 }

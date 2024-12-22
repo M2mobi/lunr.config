@@ -28,13 +28,27 @@ class ConfigurationConvertArrayToClassTest extends ConfigurationTest
     }
 
     /**
+     * Test convert_array_to_class() with non-array input values.
+     *
+     * @param mixed $input Various invalid values
+     *
+     * @dataProvider nonArrayValueProvider
+     * @covers       Lunr\Core\Configuration::convert_array_to_class
+     */
+    public function testConvertArrayToClassWithNonArrayValues(mixed$input): void
+    {
+        $method = $this->get_reflection_method('convert_array_to_class');
+        $this->assertEquals($input, $method->invokeArgs($this->class, [ $input ]));
+    }
+
+    /**
      * Test convert_array_to_class() with an empty array as input.
      *
      * @covers Lunr\Core\Configuration::convert_array_to_class
      */
     public function testConvertArrayToClassWithEmptyArrayValue(): void
     {
-        $method = $this->get_accessible_reflection_method('convert_array_to_class');
+        $method = $this->get_reflection_method('convert_array_to_class');
         $output = $method->invokeArgs($this->class, [ [] ]);
 
         $this->assertArrayEmpty($output);
@@ -51,7 +65,7 @@ class ConfigurationConvertArrayToClassTest extends ConfigurationTest
         $input['test']  = 'String';
         $input['test1'] = 1;
 
-        $method = $this->get_accessible_reflection_method('convert_array_to_class');
+        $method = $this->get_reflection_method('convert_array_to_class');
         $output = $method->invokeArgs($this->class, [ $input ]);
 
         $this->assertEquals($input, $output);
@@ -71,17 +85,17 @@ class ConfigurationConvertArrayToClassTest extends ConfigurationTest
         $config['test2']['test3'] = 1;
         $config['test2']['test4'] = FALSE;
 
-        $method = $this->get_accessible_reflection_method('convert_array_to_class');
+        $method = $this->get_reflection_method('convert_array_to_class');
         $output = $method->invokeArgs($this->class, [ $config ]);
 
         $this->assertTrue(is_array($output));
 
         $this->assertInstanceOf('Lunr\Core\Configuration', $output['test2']);
 
-        $property = $this->get_accessible_reflection_property('size');
+        $property = $this->get_reflection_property('size');
         $this->assertEquals(2, $property->getValue($output['test2']));
 
-        $property = $this->get_accessible_reflection_property('config');
+        $property = $this->get_reflection_property('config');
         $this->assertEquals($config['test2'], $property->getValue($output['test2']));
     }
 

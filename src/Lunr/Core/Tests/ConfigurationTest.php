@@ -26,7 +26,7 @@ abstract class ConfigurationTest extends LunrBaseTest
      * Default config values.
      * @var array
      */
-    protected $config;
+    protected array $config;
 
     /**
      * Instance of the tested class.
@@ -53,7 +53,7 @@ abstract class ConfigurationTest extends LunrBaseTest
      *
      * @return void
      */
-    protected function setUpArray($config): void
+    protected function setUpArray(array $config): void
     {
         $this->config = $config;
         $this->class  = new Configuration($config);
