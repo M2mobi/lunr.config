@@ -311,9 +311,9 @@ class Configuration implements ArrayAccess, Iterator, Countable
      *
      * (Inherited from Iterator)
      *
-     * @return scalar Scalar on success, NULL on failure
+     * @return array-key|null Value on success, NULL on failure
      */
-    public function key(): mixed
+    public function key(): int|string|null
     {
         return key($this->config);
     }
