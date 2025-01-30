@@ -201,6 +201,29 @@ class Configuration implements ArrayAccess, Iterator, Countable
     }
 
     /**
+     * Load environment variables as configuration.
+     *
+     * @return void
+     */
+    public function load_environment(): void
+    {
+        $config = $this->config;
+
+        foreach ($_ENV as $key => $value)
+        {
+            $config[strtolower($key)] = $value;
+        }
+
+        if (!empty($config))
+        {
+            $config = $this->convert_array_to_class($config);
+        }
+
+        $this->config       = $config;
+        $this->size_invalid = TRUE;
+    }
+
+    /**
      * Convert an input array recursively into a Configuration class hierarchy.
      *
      * @param array<int|string,mixed> $array Input array
